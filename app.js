@@ -1,3 +1,4 @@
+// Initialiser le projet
 
 const express = require('express')
 const app = express()
