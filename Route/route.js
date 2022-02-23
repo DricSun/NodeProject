@@ -1,11 +1,10 @@
 const express = require('express')
-const app = express()
-const port = 3000
+const router = express.Router()
+const postController = require('./../controllers/test')
 
-app.get('/hello', (req, res) => {
-  res.send('Hello World!')
-})
+console.log("test route")
+router.post('/',postController.createPost)
+router.get('/:id',postController.getPostId)
+router.get('/',postController.getAllPost)
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+module.exports = router
