@@ -7,9 +7,7 @@ mongoose.connect("mongodb+srv://cedric:tennis78@cluster0.tmvh2.mongodb.net/myFir
     .then((result) =>console.log("ok") )
     .catch((err) => console.log(Error))
 
-app.use((req, res) => {
-    res. json({ message: 'Server On'});
-});
+
 
 
 app.use((req,res,next)=> {
@@ -18,6 +16,18 @@ app.use((req,res,next)=> {
     res.setHeader('Access-Control-Allow-Methods','GET,POST,PUT,DELETE')
     next()
 })
+
+
+app.use(express.json())
+app.use(express.urlencoded({
+    extended :true
+}))
+app.use('/test',testRoutes)
+
+app.use((req, res) => {
+    res. json({ message: 'Server On'});
+});
+
 
 //  YO
 module.exports = app;

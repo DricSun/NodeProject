@@ -3,12 +3,10 @@ const fs = require('fs')
 exports.createPost = (req,res,next)=>{
     console.log("post test")
     const postObject = JSON.parse(req.body)
-    delete postObject._id;
     const p = new Post({
         titre:req.body.titre,
-text: req.body.text,
-autor: req.body.autor
-
+        text: req.body.text,
+        autor: req.body.autor
     })
     p.save()
         .then(() => res.status(201).json({message : 'ok'}))
